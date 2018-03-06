@@ -1,0 +1,8 @@
+make[1]: Entering directory `/home/linux/ieng6/oce/99/aeckman/05-egg'
+stack exec -- egg  tests/input/dyn0.egg > tests/output/dyn0.s
+egg: TBD:compilePrim1:isNum
+CallStack (from HasCallStack):
+  error, called at lib/Language/Egg/Compiler.hs:152:32 in egg-0.1.0.0-BICRyseCZOgDidKW8MZQAr:Language.Egg.Compiler
+make[1]: *** [tests/output/dyn0.s] Error 1
+rm tests/output/dyn0.s
+make[1]: Leaving directory `/home/linux/ieng6/oce/99/aeckman/05-egg'

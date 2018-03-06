@@ -1,0 +1,9 @@
+make[1]: Entering directory `/home/linux/ieng6/oce/99/aeckman/05-egg'
+stack exec -- egg  tests/input/gt-r.egg > tests/output/gt-r.s
+nasm -f aout -o tests/output/gt-r.o tests/output/gt-r.s
+clang -g -m32 -mstackrealign -o tests/output/gt-r.run c-bits/main.c tests/output/gt-r.o
+tests/output/gt-r.run > tests/output/gt-r.result
+Error: expected a number but got 0xffffffff
+make[1]: *** [tests/output/gt-r.result] Error 1
+rm tests/output/gt-r.run tests/output/gt-r.s tests/output/gt-r.o
+make[1]: Leaving directory `/home/linux/ieng6/oce/99/aeckman/05-egg'

@@ -1,0 +1,20 @@
+make[1]: Entering directory `/home/linux/ieng6/oce/99/aeckman/05-egg'
+stack exec -- egg  tests/input/err-dup-param.egg > tests/output/err-dup-param.s
+Errors found!
+tests/input/err-dup-param.egg:1:13-14: Duplicate parameter 'x'
+
+         1|  def add2(x, x):
+                         ^
+
+tests/input/err-dup-param.egg:2:7-8: Unbound variable 'y'
+
+         2|    x + y
+                   ^
+
+tests/input/err-dup-param.egg:(4:1)-(5:1): Wrong arity of arguments at call of add2
+
+         4|  add2(12)
+
+make[1]: *** [tests/output/err-dup-param.s] Error 1
+rm tests/output/err-dup-param.s
+make[1]: Leaving directory `/home/linux/ieng6/oce/99/aeckman/05-egg'

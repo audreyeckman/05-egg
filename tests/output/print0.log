@@ -1,0 +1,7 @@
+make[1]: Entering directory `/home/linux/ieng6/oce/99/aeckman/05-egg'
+stack exec -- egg  tests/input/print0.egg > tests/output/print0.s
+nasm -f aout -o tests/output/print0.o tests/output/print0.s
+clang -g -m32 -mstackrealign -o tests/output/print0.run c-bits/main.c tests/output/print0.o
+tests/output/print0.run > tests/output/print0.result
+rm tests/output/print0.o tests/output/print0.s tests/output/print0.run
+make[1]: Leaving directory `/home/linux/ieng6/oce/99/aeckman/05-egg'

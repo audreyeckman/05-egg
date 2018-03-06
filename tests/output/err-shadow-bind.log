@@ -1,0 +1,11 @@
+make[1]: Entering directory `/home/linux/ieng6/oce/99/aeckman/05-egg'
+stack exec -- egg  tests/input/err-shadow-bind.egg > tests/output/err-shadow-bind.s
+Errors found!
+tests/input/err-shadow-bind.egg:2:13-14: Shadow binding 'x'
+
+         2|      z = let x = add1(add1(x)), 
+                         ^
+
+make[1]: *** [tests/output/err-shadow-bind.s] Error 1
+rm tests/output/err-shadow-bind.s
+make[1]: Leaving directory `/home/linux/ieng6/oce/99/aeckman/05-egg'
