@@ -64,8 +64,9 @@ wellFormedE fEnv = go
     go vEnv (Let x e1 e2   _) = duplicateBindErrors vEnv x
                              ++ go vEnv e1
                              ++ go (addEnv x vEnv) e2
-    go vEnv (Tuple es      _) = error "TBD:wellFormed:Tuple"
-    go vEnv (GetItem e1 e2 _) = error "TBD:wellFormed:GetItem"
+    go vEnv (Tuple es      l) = expTupleErrors fEnv es l --TBD 
+ 			     ++ gos vEnv es
+    go vEnv (GetItem e1 e2 _) = gos vEnv [e1, e2]        --TBD
     go vEnv (App f es      l) = callArityErrors fEnv f es l
                              ++ unboundFunErrors fEnv f l
                              ++ gos vEnv es
@@ -115,6 +116,12 @@ callArityErrors fEnv f es l
   = case lookupEnv f fEnv of
       Just n  -> condError (n /= length es) (errCallArity l f)
       Nothing -> []
+
+--Added
+expTupleErrors :: FunEnv -> [Bare] -> SourceSpan -> [UserError]
+expTupleErrors fEnv es l
+  = condError ((length es) < 2) (errExpTuple l)
+
 --------------------------------------------------------------------------------
 -- | Error Constructors
 --------------------------------------------------------------------------------
@@ -129,3 +136,5 @@ errLargeNum   l n = mkError (printf "Number '%d' is too large" n) l
 errUnboundVar l x = mkError (printf "Unbound variable '%s'" x) l
 errUnboundFun l f = mkError (printf "Function '%s' is not defined" f) l
 errCallArity  l f = mkError (printf "Wrong arity of arguments at call of %s" f) l
+--Added from ReadME
+errExpTuple   l   = mkError (printf "expected a tuple") l
