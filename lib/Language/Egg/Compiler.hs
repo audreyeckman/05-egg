@@ -124,9 +124,19 @@ compileEnv env (If v e1 e2 l)    = assertType env v TBoolean
     i1s                          = compileEnv env e1
     i2s                          = compileEnv env e2
 
-compileEnv env (Tuple es _)      = error "TBD:compileEnv:Tuple"
+compileEnv env (Tuple es _)      = tupleAlloc (length es)
+				++ tupleCopy env es 1
+    				++ setTag (Reg EAX) TTuple
 
-compileEnv env (GetItem vE vI _) = error "TBD:compileEnv:GetItem"
+  
+compileEnv env (GetItem vE vI _) = error "TBD" 
+
+--				   assertType env vE TTuple   
+--                              ++ assertType env vI TNumber
+--				++ [ IMov (Reg EAX) (immArg env e) ]   -- 2. load pointer into eax
+-- 				++ [unsetTag (Reg EAX) TTuple]           -- 3. remove tag bit to get address
+-- 				++ [ IMov (Reg EAX) (pairAddr fld) ]   -- 4. copy value from resp. slot to eax
+
 
 compileEnv env (App f vs _)      = call (Builtin f) (param env <$> vs)
 
@@ -149,9 +159,9 @@ compileBind env (x, e) = (env', is)
 compilePrim1 :: Tag -> Env -> Prim1 -> IExp -> [Instruction]
 compilePrim1 l env Add1    v = compilePrim2 l env Plus  v (Number 1 l)
 compilePrim1 l env Sub1    v = compilePrim2 l env Minus v (Number 1 l)
-compilePrim1 l env IsNum   v = error "TBD:compilePrim1:isNum"
-compilePrim1 l env IsBool  v = error "TBD:compilePrim1:isBool"
-compilePrim1 l env IsTuple v = error "TBD:compilePrim1:isTuple"
+compilePrim1 l env IsNum   v = typeCheck l env v TNumber   --TBD
+compilePrim1 l env IsBool  v = typeCheck l env v TBoolean  --TBD
+compilePrim1 l env IsTuple v = typeCheck l env v TTuple    --TBD
 compilePrim1 _ env Print   v = call (Builtin "print") [param env v]
 
 compilePrim2 :: Tag -> Env -> Prim2 -> IExp -> IExp -> [Instruction]
@@ -174,6 +184,28 @@ immArg _   e             = panic msg (sourceSpan e)
 
 strip = fmap (const ())
 
+
+--Added for Tuples--
+tupleAlloc :: Int -> [Instruction]
+tupleAlloc n = [ IMov (Reg EAX) (Reg ESI)
+      	       , IMov (Sized DWordPtr (RegOffset 0 EAX)) (repr n)
+    	       , IAdd (Reg ESI) (Const 8)
+    	       ]
+
+tupleCopy env [] _ = []
+tupleCopy env (e:es) i =
+              [ IMov (Reg EBX) (immArg env e)]          
+            ++[ IMov (pairAddr i) (Reg EBX)]
+            ++ (tupleCopy env es (i+1))
+
+--pairAddr :: IExp -> Arg
+pairAddr fld = Sized DWordPtr (RegOffset (4 * fld) EAX)
+
+--setTag :: Register -> Ty -> [Instruction]
+setTag r ty = [ IAdd r (typeTag ty) ]
+
+--unsetTag :: Register -> Ty -> Asm
+unsetTag r ty = ISub (Reg EAX) (typeTag ty)
 --------------------------------------------------------------------------------
 -- | Arithmetic
 --------------------------------------------------------------------------------
@@ -221,6 +253,18 @@ cmpType env v ty
     , IMov (Reg EBX) (Reg EAX)
     , IAnd (Reg EBX) (typeMask ty)
     , ICmp (Reg EBX) (typeTag  ty)
+    ]
+
+--Added
+typeCheck :: Tag -> Env -> IExp -> Ty -> [Instruction]
+typeCheck l env v ty
+ =   cmpType env v ty
+ ++ [ IJe  (BranchTrue (snd l))
+    , IMov (Reg EAX) (repr False)
+    , IJmp (BranchDone (snd l))
+    , ILabel (BranchTrue (snd l))
+    , IMov (Reg EAX) (repr True)
+    , ILabel (BranchDone (snd l))
     ]
 
 --------------------------------------------------------------------------------
