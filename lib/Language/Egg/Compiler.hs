@@ -124,11 +124,20 @@ compileEnv env (If v e1 e2 l)    = assertType env v TBoolean
     i1s                          = compileEnv env e1
     i2s                          = compileEnv env e2
 
-compileEnv env (Tuple es _)      = tupleAlloc (length es)
-				++ tupleCopy env es 1
-    				++ setTag (Reg EAX) TTuple
+compileEnv env (Tuple es _)      = 	
+				   tupleAlloc (length es)
+ 				++ tupleCopy env es 1
+			        ++ setTag (Reg EAX) TTuple
 
-  
+--Pseudocode from lecture for Tuples
+--1. assertType env e Tuple
+--2. evaluate v1 at offset 0 (save it in ebx/some register)
+--3. evaluate v2 
+--4 check v2 >= 0
+--5. check v2 < v1.length
+--6. [v1 + 4* (v2 +1)]
+
+ 
 compileEnv env (GetItem vE vI _) = error "TBD" 
 
 --				   assertType env vE TTuple   
@@ -159,9 +168,9 @@ compileBind env (x, e) = (env', is)
 compilePrim1 :: Tag -> Env -> Prim1 -> IExp -> [Instruction]
 compilePrim1 l env Add1    v = compilePrim2 l env Plus  v (Number 1 l)
 compilePrim1 l env Sub1    v = compilePrim2 l env Minus v (Number 1 l)
-compilePrim1 l env IsNum   v = typeCheck l env v TNumber   --TBD
-compilePrim1 l env IsBool  v = typeCheck l env v TBoolean  --TBD
-compilePrim1 l env IsTuple v = typeCheck l env v TTuple    --TBD
+compilePrim1 l env IsNum   v = typeCheck l env v TNumber   --TBD Done
+compilePrim1 l env IsBool  v = typeCheck l env v TBoolean  --TBD Done
+compilePrim1 l env IsTuple v = typeCheck l env v TTuple    --TBD Done 
 compilePrim1 _ env Print   v = call (Builtin "print") [param env v]
 
 compilePrim2 :: Tag -> Env -> Prim2 -> IExp -> IExp -> [Instruction]
@@ -193,10 +202,10 @@ tupleAlloc n = [ IMov (Reg EAX) (Reg ESI)
     	       ]
 
 tupleCopy env [] _ = []
-tupleCopy env (e:es) i =
+tupleCopy env (e:es) v =
               [ IMov (Reg EBX) (immArg env e)]          
-            ++[ IMov (pairAddr i) (Reg EBX)]
-            ++ (tupleCopy env es (i+1))
+            ++[ IMov (pairAddr v) (Reg EBX)]
+            ++ (tupleCopy env es (v+1))
 
 --pairAddr :: IExp -> Arg
 pairAddr fld = Sized DWordPtr (RegOffset (4 * fld) EAX)
