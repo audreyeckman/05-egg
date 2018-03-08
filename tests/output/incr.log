@@ -1,7 +1,5 @@
-make[1]: Entering directory `/home/linux/ieng6/oce/99/aeckman/05-egg'
 stack exec -- egg  tests/input/incr.egg > tests/output/incr.s
-nasm -f aout -o tests/output/incr.o tests/output/incr.s
+nasm -f macho -o tests/output/incr.o tests/output/incr.s
 clang -g -m32 -mstackrealign -o tests/output/incr.run c-bits/main.c tests/output/incr.o
 tests/output/incr.run > tests/output/incr.result
-rm tests/output/incr.o tests/output/incr.run tests/output/incr.s
-make[1]: Leaving directory `/home/linux/ieng6/oce/99/aeckman/05-egg'
+rm tests/output/incr.run tests/output/incr.o tests/output/incr.s

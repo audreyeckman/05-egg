@@ -119,15 +119,17 @@ compileEnv env (Prim2 o v1 v2 l) = compilePrim2 l env o v1 v2
 compileEnv env (If v e1 e2 l)    = assertType env v TBoolean
                                 ++ IMov (Reg EAX) (immArg env v)
                                  : ICmp (Reg EAX) (repr False)
-                                 : branch l IJe i1s i2s
+                                 : branch l IJe var1 var2
   where
-    i1s                          = compileEnv env e1
-    i2s                          = compileEnv env e2
+    var1                          = compileEnv env e1
+    var2                          = compileEnv env e2
 
 compileEnv env (Tuple es _)      = 	
 				   tupleAlloc (length es)
- 				++ tupleCopy env es 1
-			        ++ setTag (Reg EAX) TTuple
+                 ++ addSize env (length es)
+ 				 ++ tupleCopy env es 1
+                 ++ addPad env ((length es) + 1)
+			     ++ setTag (Reg EAX) TTuple
 
 --Pseudocode from lecture for Tuples
 --1. assertType env e Tuple
@@ -138,15 +140,21 @@ compileEnv env (Tuple es _)      =
 --6. [v1 + 4* (v2 +1)]
 
  
-compileEnv env (GetItem vE vI _) = error "TBD" 
-
---				   assertType env vE TTuple   
---                              ++ assertType env vI TNumber
---				++ [ IMov (Reg EAX) (immArg env e) ]   -- 2. load pointer into eax
--- 				++ [unsetTag (Reg EAX) TTuple]           -- 3. remove tag bit to get address
--- 				++ [ IMov (Reg EAX) (pairAddr fld) ]   -- 4. copy value from resp. slot to eax
-
-
+compileEnv env (GetItem vE vI _) = 
+                                --if vE is a pointer
+                                assertType env vE TTuple
+                                ++ assertType env vI TNumber
+                                ++ assertBound env vE vI
+                                ++ [ IMov (Reg EBX) (immArg env vE) ]
+                                ++ [ ISub (Reg EBX) (typeTag TTuple) ] 
+                                ++ [ IMov (Reg ECX) (immArg env vI) ]
+                                ++ [ ISar (Reg ECX) (Const 1)]
+                                --increment index
+                                ++ [ IAdd (Reg ECX) (Const 1) ]
+                                --EAX = EAX + ECX * 4                       
+                                ++ [ IMov (Reg EAX) (Sized DWordPtr 
+                                        (RegIndex EBX ECX))] 
+    
 compileEnv env (App f vs _)      = call (Builtin f) (param env <$> vs)
 
 compileImm :: Env -> IExp -> Instruction
@@ -195,17 +203,31 @@ strip = fmap (const ())
 
 
 --Added for Tuples--
-tupleAlloc :: Int -> [Instruction]
-tupleAlloc n = [ IMov (Reg EAX) (Reg ESI)
-      	       , IMov (Sized DWordPtr (RegOffset 0 EAX)) (repr n)
-    	       , IAdd (Reg ESI) (Const 8)
-    	       ]
+tupleAlloc args =
+    [ IMov (Reg EAX) (Reg ESI)
+    , IMov (Sized DWordPtr (RegOffset 0 EAX)) (repr args)
+    , IAdd (Reg ESI) (Const size)
+    ]
+    where
+      size = 4 * roundToEven(args+1)
 
 tupleCopy env [] _ = []
-tupleCopy env (e:es) v =
-              [ IMov (Reg EBX) (immArg env e)]          
-            ++[ IMov (pairAddr v) (Reg EBX)]
-            ++ (tupleCopy env es (v+1))
+tupleCopy env (e:es) v = [ IMov (Reg EBX) (immArg env e)]
+                       ++ [IMov (pairAddr v) (Reg EBX) ]
+                       ++ (tupleCopy env es (v+1))
+
+roundToEven :: Int -> Int
+roundToEven n = if mod n 2 == 1 then n+1
+                else n        
+addPad env loc =
+               [ IMov (Reg EBX) (Const 0) ]
+            ++ [ IMov (pairAddr loc) (Reg EBX) ] 
+
+addSize env es =
+              [ IMov (Reg EBX) (Const es)
+              , IShl (Reg EBX) (Const 1)
+              , IMov (pairAddr 0) (Reg EBX)
+              ]             
 
 --pairAddr :: IExp -> Arg
 pairAddr fld = Sized DWordPtr (RegOffset (4 * fld) EAX)
@@ -213,8 +235,6 @@ pairAddr fld = Sized DWordPtr (RegOffset (4 * fld) EAX)
 --setTag :: Register -> Ty -> [Instruction]
 setTag r ty = [ IAdd r (typeTag ty) ]
 
---unsetTag :: Register -> Ty -> Asm
-unsetTag r ty = ISub (Reg EAX) (typeTag ty)
 --------------------------------------------------------------------------------
 -- | Arithmetic
 --------------------------------------------------------------------------------
@@ -256,6 +276,25 @@ assertType env v ty
   =   cmpType env v ty
   ++ [ IJne (DynamicErr (TypeError ty))    ]
 
+assertLowerBound env ve vi =  [ IMov (Reg ECX) (immArg env vi) ]
+                             ++ [ ISar (Reg ECX) (Const 1)]
+                             ++ [ ICmp (Reg ECX) (Const 0)]
+                             ++ [ IJl (DynamicErr (IndexLow))]
+
+assertUpperBound env ve vi =
+                             [ IMov (Reg EBX) (immArg env ve) ]
+                             ++ [ ISub (Reg EBX) (typeTag TTuple) ] 
+                             ++ [ IMov (Reg EAX) (Sized DWordPtr 
+                                     (RegOffset 0 EBX))]
+                             ++ [ IMov (Reg ECX) (immArg env vi) ]
+                             ++ [ ICmp (Reg ECX) (Reg EAX)]
+                             ++ [ IJg (DynamicErr (IndexHigh))]
+
+assertBound env ve vi = assertLowerBound env ve vi 
+                        ++ assertUpperBound env ve vi   
+  
+  
+  
 cmpType :: Env -> IExp -> Ty -> [Instruction]
 cmpType env v ty
   = [ IMov (Reg EAX) (immArg env v)

@@ -1,9 +1,7 @@
-make[1]: Entering directory `/home/linux/ieng6/oce/99/aeckman/05-egg'
 stack exec -- egg  tests/input/add1-e.egg > tests/output/add1-e.s
-nasm -f aout -o tests/output/add1-e.o tests/output/add1-e.s
+nasm -f macho -o tests/output/add1-e.o tests/output/add1-e.s
 clang -g -m32 -mstackrealign -o tests/output/add1-e.run c-bits/main.c tests/output/add1-e.o
 tests/output/add1-e.run > tests/output/add1-e.result
 Error: expected a number but got 0xffffffff
 make[1]: *** [tests/output/add1-e.result] Error 1
 rm tests/output/add1-e.run tests/output/add1-e.o tests/output/add1-e.s
-make[1]: Leaving directory `/home/linux/ieng6/oce/99/aeckman/05-egg'

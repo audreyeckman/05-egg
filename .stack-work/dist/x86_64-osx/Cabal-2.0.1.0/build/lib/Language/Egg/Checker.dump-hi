@@ -1,0 +1,329 @@
+
+==================== FINAL INTERFACE ====================
+2018-03-08 20:29:29.273907 UTC
+
+interface egg-0.1.0.0-BICRyseCZOgDidKW8MZQAr:Language.Egg.Checker 8022
+  interface hash: 8059385d8927bce0d681d9cd289f9c37
+  ABI hash: 1fc869ed4f094f1ad4126f4572606ccf
+  export-list hash: ce0361443ba9f94a74b77fd4056dc6db
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: cdb029922714aca1953b5aca2b2991f0
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Language.Egg.Checker.check
+  Language.Egg.Checker.errUnboundFun
+  Language.Egg.Checker.errUnboundVar
+module dependencies: Language.Egg.Types Language.Egg.UX
+                     Language.Egg.Utils
+package dependencies: array-0.5.2.0 base-4.10.1.0 binary-0.8.5.1
+                      bytestring-0.10.8.2 cmdargs-0.10.18 containers-0.5.10.2
+                      deepseq-1.4.3.0 directory-1.3.0.2 filepath-1.4.1.2 ghc-prim-0.5.1.1
+                      integer-gmp-1.0.1.0 megaparsec-6.3.0 mtl-2.2.1
+                      parser-combinators-0.2.1 process-1.6.1.0 text-1.2.2.2 time-1.8.0.2
+                      transformers-0.5.2.0 unix-2.7.2.2
+orphans: egg-0.1.0.0-BICRyseCZOgDidKW8MZQAr:Language.Egg.Types
+         text-1.2.2.2:Data.Text.Lazy text-1.2.2.2:Data.Text
+         binary-0.8.5.1:Data.Binary.Generic
+         bytestring-0.10.8.2:Data.ByteString.Builder
+         text-1.2.2.2:Data.Text.Show
+         transformers-0.5.2.0:Control.Monad.Trans.Error
+         time-1.8.0.2:Data.Time.Format.Parse
+         time-1.8.0.2:Data.Time.LocalTime.Internal.ZonedTime
+         time-1.8.0.2:Data.Time.LocalTime.Internal.LocalTime
+         time-1.8.0.2:Data.Time.Calendar.Gregorian base-4.10.1.0:GHC.Float
+         base-4.10.1.0:GHC.Base
+family instance modules: base-4.10.1.0:Control.Applicative
+                         base-4.10.1.0:Data.Complex base-4.10.1.0:Data.Either
+                         base-4.10.1.0:Data.Functor.Compose base-4.10.1.0:Data.Functor.Const
+                         base-4.10.1.0:Data.Functor.Identity
+                         base-4.10.1.0:Data.Functor.Product base-4.10.1.0:Data.Functor.Sum
+                         base-4.10.1.0:Data.List.NonEmpty base-4.10.1.0:Data.Monoid
+                         base-4.10.1.0:Data.Semigroup base-4.10.1.0:Data.Type.Equality
+                         base-4.10.1.0:Data.Version base-4.10.1.0:Data.Void
+                         base-4.10.1.0:GHC.Exts base-4.10.1.0:GHC.Generics
+                         base-4.10.1.0:GHC.IO.Exception base-4.10.1.0:GHC.TypeLits
+                         base-4.10.1.0:GHC.TypeNats containers-0.5.10.2:Data.IntMap.Internal
+                         containers-0.5.10.2:Data.IntSet.Internal
+                         containers-0.5.10.2:Data.Map.Internal
+                         containers-0.5.10.2:Data.Sequence.Internal
+                         containers-0.5.10.2:Data.Set.Internal containers-0.5.10.2:Data.Tree
+                         megaparsec-6.3.0:Text.Megaparsec
+                         megaparsec-6.3.0:Text.Megaparsec.Error
+                         megaparsec-6.3.0:Text.Megaparsec.Pos
+                         megaparsec-6.3.0:Text.Megaparsec.Stream text-1.2.2.2:Data.Text
+                         text-1.2.2.2:Data.Text.Lazy
+import  -/  base-4.10.1.0:Control.Exception c134ea327d158f2eebf26e12a1d4ad47
+import  -/  base-4.10.1.0:Data.Foldable 9ed87455d68e87ff2b5b8725eae9897e
+import  -/  base-4.10.1.0:Data.List 4ab7fa2a1b87502b23af891a384f0506
+import  -/  base-4.10.1.0:GHC.Base 782fd99b5e36f3698a26179a49afca64
+import  -/  base-4.10.1.0:GHC.Exception 471142a05c31a6533c10399f8190de35
+import  -/  base-4.10.1.0:GHC.List e3060fbeb44ce0038e6b4dedf2dd9cf1
+import  -/  base-4.10.1.0:Prelude 31945b7d0084063347fc52506d3a4020
+import  -/  base-4.10.1.0:Text.Printf 3260e305614fadf610f6d8134e12b571
+import  -/  Language.Egg.Types 26a05ab3461a0d348a47d2147d423df2
+  exports: e794af85b5e9584ad8b7e9170c95b371
+  App b2a4af629de6b5e670c56f3a109c24cc
+  Bare 4fd33d361786aaceabada0952e2d0ac3
+  BareBind f9d02389beda50ee3a0b145a57faf639
+  BareDecl 56247e661b5953d21ada9986696db816
+  BareProgram 4b32ec200b97764cc64a6cb2301f182b
+  Boolean 820679df2396e3f2e45cc8602549e4d0
+  Decl ad6e0cec0b34b46f9b8a5336902592fb
+  Env a233ecf0c5ee5660f58c30f3cd834fcb
+  GetItem f380c9d99636bfb091ccac24272873d4
+  Id 18f0b2b05502c03bb7728f082752dea5
+  Id 25d3de4be14b1152d53d78922acde7cc
+  If bdcfd2d661c009733b44e398bdc0f368
+  Let d13a25b73dbff2bffdf31e8b24ecc302
+  Number e4985d3308adf5b9041ed30189dd08d2
+  Prim1 3b159609d460fee39be6a935f1089ca5
+  Prim2 bffbed654032241b26f6f09d283ffedc
+  Prog 05d2efb8721dd2b900ebf41946920aef
+  Tuple 6d2bd73d76f75c599e548d02ce8b3e8c
+  addEnv 809e7dcfe910569dc982d08f0ab08779
+  bindId 4fe7b24080be7b3327ba2d30e5c4d4e1
+  emptyEnv 1465a6c3108d9e548af59b0044bfe6b3
+  fName b031da39b46aedd51a2c3fefbb846c5d
+  fromListEnv 0bd805088f8a20c79b1a36b4a6396e0d
+  lookupEnv d09e59edb5b945516ac168a8c8203777
+  memberEnv fff23a4e1ebd8d199730a4189fbd2eed
+import  -/  Language.Egg.UX c097e9ae7ef71bf8bb0d0528f126846e
+  SourceSpan 0ca1ce4540bb9d821f6c62b39ed6d31d
+  UserError 9d897471252cf20889b6f541fcfda598
+  mkError a60b353de65b2e141ec02c6aea4b977d
+  pprint e64e031795bc7727533999669fcfa34d
+  sourceSpan 235f0f5ff1407b00569050b5e751af30
+import  -/  Language.Egg.Utils 177642ae9ff45b7a97313efc9643b064
+  exports: 71d94caca582c91eb8850847c63b92fc
+  dupBy 53c3a0808f28e7ae122b40d0a569cde7
+import  -/  ghc-prim-0.5.1.1:GHC.Classes 93e2660065dce9329577e83d76d8f0d4
+import  -/  integer-gmp-1.0.1.0:GHC.Integer.Type 5fa81108482c33b62ec3ac7464eece96
+309f4d5d735666c0776017950a99bc92
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   Language.Egg.Checker.$trModule3
+                   Language.Egg.Checker.$trModule1) -}
+c22bfb92c990543654ddf57978555123
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Language.Egg.Checker.$trModule2) -}
+b161f59fa5e8011dc4896153769d2e42
+  $trModule2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Language.Egg.Checker"#) -}
+8b0088338d03b9d0d3dbcd6b4f6d6b5c
+  $trModule3 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Language.Egg.Checker.$trModule4) -}
+324c4836bd3674d68d7f642fefdb4d84
+  $trModule4 :: GHC.Prim.Addr#
+  {- HasNoCafRefs,
+     Unfolding: ("egg-0.1.0.0-BICRyseCZOgDidKW8MZQAr"#) -}
+16540b6982de38606b88bbe9e50b7537
+  $w$serrUnboundFun ::
+    Text.Megaparsec.Pos.SourcePos
+    -> Text.Megaparsec.Pos.SourcePos
+    -> Language.Egg.Types.Id
+    -> (# Language.Egg.UX.Text, Language.Egg.UX.SourceSpan #)
+  {- Arity: 3, Strictness: <L,U><L,U><L,U>, Inline: [0],
+     Unfolding: (\ (ww :: Text.Megaparsec.Pos.SourcePos)
+                   (ww1 :: Text.Megaparsec.Pos.SourcePos)
+                   (w :: Language.Egg.Types.Id) ->
+                 case Text.Printf.uprintfs
+                        Language.Egg.Checker.errUnboundFun2
+                        (GHC.List.reverse1
+                           @ Text.Printf.UPrintf
+                           (GHC.Types.:
+                              @ (Text.Printf.ModifierParser, Text.Printf.FieldFormatter)
+                              (Language.Egg.Checker.errUnboundFun1,
+                               \ (w2 :: Text.Printf.FieldFormat) ->
+                               case w2 of ww2 { Text.Printf.FieldFormat ww3 ww4 ww5 ww6 ww7 ww8 ww9 ->
+                               case ww9 of ww10 { GHC.Types.C# ww11 ->
+                               Text.Printf.$wformatString
+                                 @ GHC.Types.Char
+                                 Text.Printf.$fIsCharChar
+                                 w
+                                 ww3
+                                 ww4
+                                 ww5
+                                 ww11 } })
+                              (GHC.Types.[] @ Text.Printf.UPrintf))
+                           (GHC.Types.[] @ Text.Printf.UPrintf))
+                        (GHC.Types.[] @ GHC.Types.Char) of dt { DEFAULT ->
+                 (# dt, Language.Egg.UX.SS ww ww1 #) }) -}
+5d4a9d0edd1e3bd6c8c95df2585771b1
+  $w$serrUnboundVar ::
+    Text.Megaparsec.Pos.SourcePos
+    -> Text.Megaparsec.Pos.SourcePos
+    -> Language.Egg.Types.Id
+    -> (# Language.Egg.UX.Text, Language.Egg.UX.SourceSpan #)
+  {- Arity: 3, Strictness: <L,U><L,U><L,U>, Inline: [0],
+     Unfolding: (\ (ww :: Text.Megaparsec.Pos.SourcePos)
+                   (ww1 :: Text.Megaparsec.Pos.SourcePos)
+                   (w :: Language.Egg.Types.Id) ->
+                 case Text.Printf.uprintfs
+                        Language.Egg.Checker.errUnboundVar1
+                        (GHC.List.reverse1
+                           @ Text.Printf.UPrintf
+                           (GHC.Types.:
+                              @ (Text.Printf.ModifierParser, Text.Printf.FieldFormatter)
+                              (Language.Egg.Checker.errUnboundFun1,
+                               \ (w2 :: Text.Printf.FieldFormat) ->
+                               case w2 of ww2 { Text.Printf.FieldFormat ww3 ww4 ww5 ww6 ww7 ww8 ww9 ->
+                               case ww9 of ww10 { GHC.Types.C# ww11 ->
+                               Text.Printf.$wformatString
+                                 @ GHC.Types.Char
+                                 Text.Printf.$fIsCharChar
+                                 w
+                                 ww3
+                                 ww4
+                                 ww5
+                                 ww11 } })
+                              (GHC.Types.[] @ Text.Printf.UPrintf))
+                           (GHC.Types.[] @ Text.Printf.UPrintf))
+                        (GHC.Types.[] @ GHC.Types.Char) of dt { DEFAULT ->
+                 (# dt, Language.Egg.UX.SS ww ww1 #) }) -}
+e9064f610798c021bd12fcc78fcbf075
+  $wcheck ::
+    [Language.Egg.Types.Decl Language.Egg.UX.SourceSpan]
+    -> Language.Egg.Types.Expr Language.Egg.UX.SourceSpan
+    -> (# [Language.Egg.Types.Decl Language.Egg.UX.SourceSpan],
+          Language.Egg.Types.Expr Language.Egg.UX.SourceSpan #)
+  {- Arity: 2, Strictness: <S,U><L,U>, Inline: [0] -}
+42ec968864a0cdcc3eb408b5cc7fd678
+  $werrUnboundFun ::
+    Text.Printf.PrintfArg t =>
+    Text.Megaparsec.Pos.SourcePos
+    -> Text.Megaparsec.Pos.SourcePos
+    -> t
+    -> (# Language.Egg.UX.Text, Language.Egg.UX.SourceSpan #)
+  {- Arity: 4, Strictness: <L,U(1*C1(U),1*C1(U))><L,U><L,U><L,U>,
+     Inline: [0],
+     Unfolding: (\ @ t
+                   (w :: Text.Printf.PrintfArg t)
+                   (ww :: Text.Megaparsec.Pos.SourcePos)
+                   (ww1 :: Text.Megaparsec.Pos.SourcePos)
+                   (w1 :: t) ->
+                 case Text.Printf.uprintfs
+                        Language.Egg.Checker.errUnboundFun2
+                        (GHC.List.reverse1
+                           @ Text.Printf.UPrintf
+                           (GHC.Types.:
+                              @ (Text.Printf.ModifierParser, Text.Printf.FieldFormatter)
+                              (Text.Printf.parseFormat @ t w w1, Text.Printf.formatArg @ t w w1)
+                              (GHC.Types.[] @ Text.Printf.UPrintf))
+                           (GHC.Types.[] @ Text.Printf.UPrintf))
+                        (GHC.Types.[] @ GHC.Types.Char) of dt { DEFAULT ->
+                 (# dt, Language.Egg.UX.SS ww ww1 #) }) -}
+f87f03e3659953ee3530d7e07670b0ec
+  $werrUnboundVar ::
+    Text.Printf.PrintfArg t =>
+    Text.Megaparsec.Pos.SourcePos
+    -> Text.Megaparsec.Pos.SourcePos
+    -> t
+    -> (# Language.Egg.UX.Text, Language.Egg.UX.SourceSpan #)
+  {- Arity: 4, Strictness: <L,U(1*C1(U),1*C1(U))><L,U><L,U><L,U>,
+     Inline: [0],
+     Unfolding: (\ @ t
+                   (w :: Text.Printf.PrintfArg t)
+                   (ww :: Text.Megaparsec.Pos.SourcePos)
+                   (ww1 :: Text.Megaparsec.Pos.SourcePos)
+                   (w1 :: t) ->
+                 case Text.Printf.uprintfs
+                        Language.Egg.Checker.errUnboundVar1
+                        (GHC.List.reverse1
+                           @ Text.Printf.UPrintf
+                           (GHC.Types.:
+                              @ (Text.Printf.ModifierParser, Text.Printf.FieldFormatter)
+                              (Text.Printf.parseFormat @ t w w1, Text.Printf.formatArg @ t w w1)
+                              (GHC.Types.[] @ Text.Printf.UPrintf))
+                           (GHC.Types.[] @ Text.Printf.UPrintf))
+                        (GHC.Types.[] @ GHC.Types.Char) of dt { DEFAULT ->
+                 (# dt, Language.Egg.UX.SS ww ww1 #) }) -}
+37980ec86585570bf8140bff7be4dbf4
+  type FunEnv = Language.Egg.Types.Env
+0e6989b6f466bfdf90499488f6f52968
+  check ::
+    Language.Egg.Types.BareProgram -> Language.Egg.Types.BareProgram
+  {- Arity: 1, Strictness: <S(SS),1*U(U,U)>m, Inline: [0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: Language.Egg.Types.BareProgram) ->
+                 case w of ww { Language.Egg.Types.Prog ww1 ww2 ->
+                 case Language.Egg.Checker.$wcheck ww1 ww2 of ww3 { (#,#) ww4 ww5 ->
+                 Language.Egg.Types.Prog
+                   @ Language.Egg.UX.SourceSpan
+                   ww4
+                   ww5 } }) -}
+296e9aa8bc6cfbbf3c3eb81be4be49e0
+  errUnboundFun ::
+    Text.Printf.PrintfArg t =>
+    Language.Egg.UX.SourceSpan -> t -> Language.Egg.UX.UserError
+  {- Arity: 3, Strictness: <L,U(C(U),C(U))><S(SS),1*U(U,U)><L,U>m,
+     Inline: [0],
+     Unfolding: InlineRule (3, True, False)
+                (\ @ t
+                   (w :: Text.Printf.PrintfArg t)
+                   (w1 :: Language.Egg.UX.SourceSpan)
+                   (w2 :: t) ->
+                 case w1 of ww { Language.Egg.UX.SS ww1 ww2 ->
+                 case Language.Egg.Checker.$werrUnboundFun
+                        @ t
+                        w
+                        ww1
+                        ww2
+                        w2 of ww3 { (#,#) ww4 ww5 ->
+                 Language.Egg.UX.Error ww4 ww5 } }) -}
+45a778a05701ab0f265f2daab0fb157e
+  errUnboundFun1 :: [GHC.Types.Char] -> Text.Printf.FormatParse
+  {- Arity: 1, Strictness: <S,1*U>m,
+     Unfolding: (\ (ds1 :: [GHC.Types.Char]) ->
+                 case ds1 of wild {
+                   [] -> Text.Printf.errorShortFormat @ Text.Printf.FormatParse
+                   : c1 cs
+                   -> Text.Printf.FormatParse
+                        (GHC.Types.[] @ GHC.Types.Char)
+                        c1
+                        cs }) -}
+f31bd7a73e7a68e58fb60d5b0a6a7c0a
+  errUnboundFun2 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   Language.Egg.Checker.errUnboundFun3) -}
+3ca45fc16e80b580c62740d101a6ee0f
+  errUnboundFun3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Function '%s' is not defined"#) -}
+dc1812bb629e1a34dcfb4a67fbcf9f3b
+  errUnboundVar ::
+    Text.Printf.PrintfArg t =>
+    Language.Egg.UX.SourceSpan -> t -> Language.Egg.UX.UserError
+  {- Arity: 3, Strictness: <L,U(C(U),C(U))><S(SS),1*U(U,U)><L,U>m,
+     Inline: [0],
+     Unfolding: InlineRule (3, True, False)
+                (\ @ t
+                   (w :: Text.Printf.PrintfArg t)
+                   (w1 :: Language.Egg.UX.SourceSpan)
+                   (w2 :: t) ->
+                 case w1 of ww { Language.Egg.UX.SS ww1 ww2 ->
+                 case Language.Egg.Checker.$werrUnboundVar
+                        @ t
+                        w
+                        ww1
+                        ww2
+                        w2 of ww3 { (#,#) ww4 ww5 ->
+                 Language.Egg.UX.Error ww4 ww5 } }) -}
+ef79b0eac090b40a9635a58edf63ce55
+  errUnboundVar1 :: [GHC.Types.Char]
+  {- Unfolding: (GHC.CString.unpackCString#
+                   Language.Egg.Checker.errUnboundVar2) -}
+eb5fbcb52a0a191a9bff3ee2a99d0993
+  errUnboundVar2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Unbound variable '%s'"#) -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+

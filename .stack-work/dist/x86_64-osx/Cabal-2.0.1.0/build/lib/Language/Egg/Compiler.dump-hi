@@ -1,0 +1,572 @@
+
+==================== FINAL INTERFACE ====================
+2018-03-08 20:35:48.435527 UTC
+
+interface egg-0.1.0.0-BICRyseCZOgDidKW8MZQAr:Language.Egg.Compiler [orphan module] 8022
+  interface hash: bf3ea18cdde3e41f87f1f3e2871b4b7b
+  ABI hash: 0a146220717b0b652398e2f4213dd8bc
+  export-list hash: 1888b8f13a9ec636f37e7d12bf1dff88
+  orphan hash: b2102f81007a779cef71cd147b4a8d3e
+  flag hash: f5712596522591d56f797ac12b0da534
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Language.Egg.Compiler.compile
+  Language.Egg.Compiler.compiler
+module dependencies: Language.Egg.Asm Language.Egg.Checker
+                     Language.Egg.Normalizer Language.Egg.Parser Language.Egg.Types
+                     Language.Egg.UX Language.Egg.Utils
+package dependencies: array-0.5.2.0 base-4.10.1.0 binary-0.8.5.1
+                      bytestring-0.10.8.2 case-insensitive-1.2.0.10 cmdargs-0.10.18
+                      containers-0.5.10.2 deepseq-1.4.3.0 directory-1.3.0.2
+                      filepath-1.4.1.2 ghc-prim-0.5.1.1 hashable-1.2.6.1
+                      integer-gmp-1.0.1.0 integer-logarithms-1.0.2 megaparsec-6.3.0
+                      mtl-2.2.1 parser-combinators-0.2.1 primitive-0.6.2.0
+                      process-1.6.1.0 scientific-0.3.5.2 text-1.2.2.2 time-1.8.0.2
+                      transformers-0.5.2.0 unix-2.7.2.2
+orphans: hashable-1.2.6.1:Data.Hashable.Generic
+         egg-0.1.0.0-BICRyseCZOgDidKW8MZQAr:Language.Egg.Types
+         text-1.2.2.2:Data.Text.Lazy text-1.2.2.2:Data.Text
+         binary-0.8.5.1:Data.Binary.Generic
+         bytestring-0.10.8.2:Data.ByteString.Builder
+         text-1.2.2.2:Data.Text.Show
+         transformers-0.5.2.0:Control.Monad.Trans.Error
+         time-1.8.0.2:Data.Time.Format.Parse
+         time-1.8.0.2:Data.Time.LocalTime.Internal.ZonedTime
+         time-1.8.0.2:Data.Time.LocalTime.Internal.LocalTime
+         time-1.8.0.2:Data.Time.Calendar.Gregorian base-4.10.1.0:GHC.Float
+         base-4.10.1.0:GHC.Base
+family instance modules: base-4.10.1.0:Control.Applicative
+                         base-4.10.1.0:Data.Complex base-4.10.1.0:Data.Either
+                         base-4.10.1.0:Data.Functor.Compose base-4.10.1.0:Data.Functor.Const
+                         base-4.10.1.0:Data.Functor.Identity
+                         base-4.10.1.0:Data.Functor.Product base-4.10.1.0:Data.Functor.Sum
+                         base-4.10.1.0:Data.List.NonEmpty base-4.10.1.0:Data.Monoid
+                         base-4.10.1.0:Data.Semigroup base-4.10.1.0:Data.Type.Equality
+                         base-4.10.1.0:Data.Version base-4.10.1.0:Data.Void
+                         base-4.10.1.0:GHC.Exts base-4.10.1.0:GHC.Generics
+                         base-4.10.1.0:GHC.IO.Exception base-4.10.1.0:GHC.TypeLits
+                         base-4.10.1.0:GHC.TypeNats containers-0.5.10.2:Data.IntMap.Internal
+                         containers-0.5.10.2:Data.IntSet.Internal
+                         containers-0.5.10.2:Data.Map.Internal
+                         containers-0.5.10.2:Data.Sequence.Internal
+                         containers-0.5.10.2:Data.Set.Internal containers-0.5.10.2:Data.Tree
+                         megaparsec-6.3.0:Text.Megaparsec
+                         megaparsec-6.3.0:Text.Megaparsec.Error
+                         megaparsec-6.3.0:Text.Megaparsec.Pos
+                         megaparsec-6.3.0:Text.Megaparsec.Stream
+                         primitive-0.6.2.0:Control.Monad.Primitive
+                         primitive-0.6.2.0:Data.Primitive.Array text-1.2.2.2:Data.Text
+                         text-1.2.2.2:Data.Text.Lazy
+import  -/  base-4.10.1.0:Control.Arrow b4ff99f516cf3ba87a1e4985dc7f496f
+import  -/  base-4.10.1.0:Control.Category e391ae0ab2b20aef43c0035a99142ed1
+import  -/  base-4.10.1.0:Data.Bits e0790a03e1e51e2d053ee3f563937f85
+import  -/  base-4.10.1.0:Data.Foldable 9ed87455d68e87ff2b5b8725eae9897e
+import  -/  base-4.10.1.0:Data.Functor 2ffda4f936b8f474394d93205750aff3
+import  -/  base-4.10.1.0:Data.Maybe 07738c5485acb328136bb15596f8b845
+import  -/  base-4.10.1.0:Data.Tuple 8fa1305aa5032ea35e2a54fa5f1e78f9
+import  -/  base-4.10.1.0:GHC.Base 782fd99b5e36f3698a26179a49afca64
+import  -/  base-4.10.1.0:GHC.IO e261d8b68ccf81a359626fa520b57d1d
+import  -/  base-4.10.1.0:GHC.List e3060fbeb44ce0038e6b4dedf2dd9cf1
+import  -/  base-4.10.1.0:GHC.Num 6e1dc5d36d99a802edb39b92bb1923b8
+import  -/  base-4.10.1.0:GHC.Real 3c62834bc25e762eabc44149c4cc142d
+import  -/  base-4.10.1.0:GHC.Show 0a8ce2b5e533d1c2cfb7954e6736be45
+import  -/  base-4.10.1.0:Prelude 31945b7d0084063347fc52506d3a4020
+import  -/  Language.Egg.Asm 844fa7a0189f19768a08bd5c04043743
+  exports: c46ca0649821c38800b4380a06b3ee73
+  asm 7007dd09c630098689777b3c514315c5
+import  -/  Language.Egg.Checker 1fc869ed4f094f1ad4126f4572606ccf
+  exports: ce0361443ba9f94a74b77fd4056dc6db
+  check 0e6989b6f466bfdf90499488f6f52968
+  errUnboundVar dc1812bb629e1a34dcfb4a67fbcf9f3b
+import  -/  Language.Egg.Normalizer 10772f8b616e508d5df896cd4cb720d2
+  exports: d682d85fa185e14210d4043a6efcb4bf
+  anormal 1cc8e0528c22b9cf1ba811ab7154fce0
+import  -/  Language.Egg.Parser 11fa3fd6cb5e6050c15c1bf08b26c253
+  exports: b6455ba0284ae090c1911991d46573fc
+  parse f639616d5fa4e606c5a46d6f72a425ce
+import  -/  Language.Egg.Types 26a05ab3461a0d348a47d2147d423df2
+  exports: e794af85b5e9584ad8b7e9170c95b371
+  Add1 737f70cbf5450f4df80dc0d0266ee33a
+  AnfExpr 09af3cd6272a2a3df1807654133ece9b
+  AnfProgram 75e0f2dc83e67374a23c145abed3ce08
+  App b2a4af629de6b5e670c56f3a109c24cc
+  Arg 43c75183d68678598c72104689ab0d16
+  ArithOverflow 49f5db423db5e7d199922386bd4ba643
+  Bind f9d02389beda50ee3a0b145a57faf639
+  Boolean 820679df2396e3f2e45cc8602549e4d0
+  BranchDone 76f8cf46c2c4b3b3ef994c859f631220
+  BranchTrue a186b42dd1f9ca9337060d531c38ec4f
+  Builtin 515aac1d2034723dbcff1ca5502ec93b
+  Const 1954df4098ffde3c2f6b16206036675f
+  DWordPtr 07c86c7efeda82248411b6baf0deaf3b
+  Decl ad6e0cec0b34b46f9b8a5336902592fb
+  Decl b031da39b46aedd51a2c3fefbb846c5d
+  DynamicErr f84c7005e6ddffc414836c4562569118
+  EAX eadaf0feb6f44c745e184d19f34e8ffd
+  EBP e7094e9bee2a9f9158c921edfa3469f1
+  EBX 006dc5cd57da9c4199e690387bd1bbad
+  ECX 29f455a31d67a8117863a1c3ce62b090
+  ESI e454a6eea314a42f5779095841f61d26
+  ESP 3ff271739f0ee019e477550bfa0af403
+  Env a233ecf0c5ee5660f58c30f3cd834fcb
+  Equal 52fefd5689448f010d1cf423431158e1
+  Expr 4fd33d361786aaceabada0952e2d0ac3
+  GetItem f380c9d99636bfb091ccac24272873d4
+  Greater 23109e1ef5a48c00f5ffe508e8afb17e
+  HexConst 5528a34277d2eaa5f80e4dd708dd520d
+  IAdd d2aaf5857ae13a585056e0987fba78c1
+  IAnd 89e09f548399a85f8d6ad11db373f6de
+  ICall 15a2b07f7d4f21652d688a09b3bf4de3
+  ICmp 5df9e2694bc86a3736efe11014f42a4d
+  IJe e4f81b3fc0b33f76342f90de55c38b5f
+  IJg 5c0199b0f4afb87567a2240f171e555d
+  IJl 60ad018602f8c4f03274dab76f68b0b0
+  IJmp 270e4d70545ceaa78ad696a4da116328
+  IJne 4e5b4737a879cfadbd5fe6948db0e51f
+  IJo b3b1939c08f2d008f1162cf4877fd727
+  ILabel df10f85acdddfacfba2c780602990436
+  IMov 53a3b90c0f19985ec26f4f666cde0e40
+  IMul e8ed7520cc35dab6f1b324f130936395
+  IPop bb83c26236f0cf6dfa3f1b8305479833
+  IPush 93d9f0cdc39d19f85a1d8f3964194589
+  IRet 35cc5ad7b66608eed16667cbab63345a
+  ISar 744c5d8cf86d0a918fc16e9e5a3e103f
+  IShl 3f6beb8bf44fb006b6216440b27461ab
+  ISub 68c0b74a330d56d5a5d73674f18e5a75
+  Id 18f0b2b05502c03bb7728f082752dea5
+  If bdcfd2d661c009733b44e398bdc0f368
+  ImmExpr d10d451ca03d1de260032c9981bde398
+  IndexHigh 1e7d8345b7e2684cc89958f946f1c2f2
+  IndexLow ad795cadf48f53ad58a4a1b13d41f9da
+  Instruction 07c38c32701f419c12f7ce8e7a2b3ffb
+  IsBool 82bb17af1f77bdba211caed89e2c00cb
+  IsNum 94f3ace083cc6516db9c9f08dcec7f49
+  IsTuple 1233fdb77783f089d5fa0f16dfef4832
+  Label 38936f1ffb5c47a8e5ece441352a9b0d
+  Less aee4460a64a55a2cc3aad6406f95fc2c
+  Let d13a25b73dbff2bffdf31e8b24ecc302
+  Minus ceb8f65b4b2c439a1742049c2fa3791a
+  Number e4985d3308adf5b9041ed30189dd08d2
+  Plus 25ee835f50bb717222074e4508029854
+  Prim1 3b159609d460fee39be6a935f1089ca5
+  Prim1 6911d88e4d344c369a9e3b36d6f724a7
+  Prim2 bffbed654032241b26f6f09d283ffedc
+  Prim2 509a9a40135c4962190e6e2fd63699af
+  Print 7d2965476309f8b366c164c564269911
+  Prog 05d2efb8721dd2b900ebf41946920aef
+  Program 0bd0c75aa2b4242ae8dc23003276ae5b
+  Reg 133b74fd15a0d6a373a9c03241702fd2
+  Reg ac48bac3f4ad4b13bd7983008ea5ae86
+  RegIndex f3fe5532adc2e22404d05bd99a7210cd
+  RegOffset a1647b20cfeb56facda6023681d72aaa
+  Sized e0053a519a550507b3dba64c7401ac47
+  Sub1 0feaf4c2c2bb721570a42d8c151bbb56
+  TBoolean a2658adfe7999b5a2b628384db6a0f2e
+  TNumber fb37088c1a3e46dc96613b57483d53b3
+  TTuple efcf59dcfb99aa68fa9a707ff3417f7b
+  Times 065b749f0c6805840ecc4001c163e940
+  Tuple 6d2bd73d76f75c599e548d02ce8b3e8c
+  Ty 7fa032ad292bbfa632f7963b2318f194
+  TypeError f5528e9f68531667cd16590aa24cf06e
+  bindId 4fe7b24080be7b3327ba2d30e5c4d4e1
+  emptyEnv 1465a6c3108d9e548af59b0044bfe6b3
+  exprBinds 1571360cddca0ca0acf9671eb164e4a7
+  fromListEnv 0bd805088f8a20c79b1a36b4a6396e0d
+  getLabel 4fd33d361786aaceabada0952e2d0ac3
+  label 32175cf396ed6424d6a856d87bd2aaad
+  lookupEnv d09e59edb5b945516ac168a8c8203777
+  pushEnv ff1b930332001fc17d8d51475a999181
+import  -/  Language.Egg.UX c097e9ae7ef71bf8bb0d0528f126846e
+  Located 84da48ef621a1a738d977e5e7fdbe4fc
+  SourceSpan 0ca1ce4540bb9d821f6c62b39ed6d31d
+  Text 27e9ce5ee8516296253884efe1c8079d
+  abort 464ebbb6847d1c85267b409766398a0c
+  panic 9b539d12d25b45cc2b1d8ac6a51f73ad
+  sourceSpan 235f0f5ff1407b00569050b5e751af30
+import  -/  Language.Egg.Utils 177642ae9ff45b7a97313efc9643b064
+  exports: 71d94caca582c91eb8850847c63b92fc
+import  -/  ghc-prim-0.5.1.1:GHC.Classes 93e2660065dce9329577e83d76d8f0d4
+import  -/  integer-gmp-1.0.1.0:GHC.Integer.Type 5fa81108482c33b62ec3ac7464eece96
+a048b33b255126f0cdeeadc34fc48c5a
+  $fLocated(,) :: Language.Egg.UX.Located Language.Egg.Compiler.Tag
+  DFunId
+  {- Arity: 1, HasNoCafRefs, Strictness: <S(SL),1*U(1*U,A)>,
+     Inline: (sat-args=0),
+     Unfolding: InlineRule (0, False, True)
+                (Data.Tuple.fst @ Language.Egg.UX.SourceSpan @ GHC.Types.Int)
+                  `cast`
+                (Sym (Language.Egg.UX.N:Located[0]
+                          <Language.Egg.Compiler.Tag>_N)) -}
+d6c9a7125a6bec4b956170dec9dcdb02
+  $fLocatedExpr ::
+    Language.Egg.UX.Located a =>
+    Language.Egg.UX.Located (Language.Egg.Types.Expr a)
+  DFunId
+  {- Arity: 2, HasNoCafRefs, Strictness: <C(S),1*C1(U(U,U))><L,1*U>,
+     Inline: (sat-args=0),
+     Unfolding: InlineRule (1, False, True)
+                Language.Egg.Compiler.$fLocatedExpr_$csourceSpan
+                  `cast`
+                (forall (a :: <*>_N).
+                 <Language.Egg.UX.Located a>_R
+                 ->_R Sym (Language.Egg.UX.N:Located[0]
+                               <Language.Egg.Types.Expr a>_N)) -}
+81e12aaeb1ef355237418f474c4c4453
+  $fLocatedExpr_$csourceSpan ::
+    Language.Egg.UX.Located a =>
+    Language.Egg.Types.Expr a -> Language.Egg.UX.SourceSpan
+  {- Arity: 2, HasNoCafRefs, Strictness: <C(S),1*C1(U(U,U))><L,1*U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ @ a
+                   ($dLocated :: Language.Egg.UX.Located a)
+                   (x :: Language.Egg.Types.Expr a) ->
+                 $dLocated `cast` (Language.Egg.UX.N:Located[0] <a>_N)
+                   (Language.Egg.Types.getLabel @ a x)) -}
+d7a2542c01d59ca2f51828663430a15f
+  $fReprBool :: Language.Egg.Compiler.Repr GHC.Types.Bool
+  DFunId
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>m2,
+     Inline: (sat-args=0),
+     Unfolding: InlineRule (0, False, True)
+                Language.Egg.Compiler.$fReprBool_$crepr
+                  `cast`
+                (Sym (Language.Egg.Compiler.N:Repr[0] <GHC.Types.Bool>_N)) -}
+86b367d6e2ffe871caeb91f41c6f61c8
+  $fReprBool1 :: Language.Egg.Types.Arg
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (Language.Egg.Types.HexConst
+                   Language.Egg.Compiler.$fReprBool2) -}
+c15f41b2c6d71cdd06938358b3b8dcd8
+  $fReprBool2 :: GHC.Types.Int
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.I# 4294967295#) -}
+98584d97ba3de437facb8428b84078b7
+  $fReprBool3 :: Language.Egg.Types.Arg
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (Language.Egg.Types.HexConst
+                   Language.Egg.Compiler.$fReprBool4) -}
+0215ca123e2b26cc1df0954eab757e94
+  $fReprBool4 :: GHC.Types.Int
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.I# 2147483647#) -}
+66f1d795edecc787f5ced4ea39645d4e
+  $fReprBool_$crepr :: GHC.Types.Bool -> Language.Egg.Types.Arg
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>m2,
+     Unfolding: InlineRule (1, True, False)
+                (\ (ds :: GHC.Types.Bool) ->
+                 case ds of wild {
+                   GHC.Types.False -> Language.Egg.Compiler.$fReprBool3
+                   GHC.Types.True -> Language.Egg.Compiler.$fReprBool1 }) -}
+d7a2542c01d59ca2f51828663430a15f
+  $fReprInt :: Language.Egg.Compiler.Repr GHC.Types.Int
+  DFunId
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,1*U(U)>m1,
+     Inline: (sat-args=0),
+     Unfolding: InlineRule (0, False, True)
+                Language.Egg.Compiler.$fReprInt_$crepr
+                  `cast`
+                (Sym (Language.Egg.Compiler.N:Repr[0] <GHC.Types.Int>_N)) -}
+f2ef1a1285c176f3167ec2fb40999529
+  $fReprInt_$crepr :: GHC.Types.Int -> Language.Egg.Types.Arg
+  {- Arity: 1, HasNoCafRefs, Strictness: <L,1*U(U)>m1,
+     Unfolding: InlineRule (1, True, False)
+                (\ (n :: GHC.Types.Int) ->
+                 Language.Egg.Types.Const
+                   (case n of wild { GHC.Types.I# x# ->
+                    GHC.Types.I# (GHC.Prim.uncheckedIShiftL# x# 1#) })) -}
+d7a2542c01d59ca2f51828663430a15f
+  $fReprInteger ::
+    Language.Egg.Compiler.Repr GHC.Integer.Type.Integer
+  DFunId
+  {- Arity: 1, Strictness: <L,1*U>m1, Inline: (sat-args=0),
+     Unfolding: InlineRule (0, False, True)
+                Language.Egg.Compiler.$fReprInteger_$crepr
+                  `cast`
+                (Sym (Language.Egg.Compiler.N:Repr[0]
+                          <GHC.Integer.Type.Integer>_N)) -}
+eb449eec5df52426eee66a5449a06cf8
+  $fReprInteger_$crepr ::
+    GHC.Integer.Type.Integer -> Language.Egg.Types.Arg
+  {- Arity: 1, Strictness: <L,1*U>m1,
+     Unfolding: InlineRule (1, True, False)
+                (\ (n :: GHC.Integer.Type.Integer) ->
+                 Language.Egg.Types.Const
+                   (case GHC.Integer.Type.integerToInt
+                           (GHC.Integer.Type.shiftLInteger n 1#) of wild { DEFAULT ->
+                    GHC.Types.I# wild })) -}
+6448dd146ba23d912c15a976b9c46bde
+  $tc'C:Repr :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   7350987026524758913##
+                   935444360781431331##
+                   Language.Egg.Compiler.$trModule
+                   Language.Egg.Compiler.$tc'C:Repr2
+                   1#
+                   Language.Egg.Compiler.$tc'C:Repr1) -}
+2e522b065b5094b2ddaf9c7f22f26406
+  $tc'C:Repr1 :: GHC.Types.KindRep
+  {- HasNoCafRefs, Strictness: m4, Inline: [~] -}
+025a6b24d4d3ffab349eb138d893dfe5
+  $tc'C:Repr2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Language.Egg.Compiler.$tc'C:Repr3) -}
+f0b65d4cbf53fa990d9c38cb7b14878d
+  $tc'C:Repr3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("'C:Repr"#) -}
+16027d8cd42005d5f94477ad66faeccc
+  $tcRepr :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   13986583030409883177##
+                   14755452344906142292##
+                   Language.Egg.Compiler.$trModule
+                   Language.Egg.Compiler.$tcRepr2
+                   0#
+                   Language.Egg.Compiler.$tcRepr1) -}
+4c672669fb4ce45279a20ee3fe18c798
+  $tcRepr1 :: GHC.Types.KindRep
+  {- HasNoCafRefs, Strictness: m4, Inline: [~] -}
+865daa43120145f184f4613c4665f12d
+  $tcRepr2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Language.Egg.Compiler.$tcRepr3) -}
+7ffc82075b4cef11e0263709a36c5609
+  $tcRepr3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Repr"#) -}
+2553c5596f23c0def0ce7cd5217fed52
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   Language.Egg.Compiler.$trModule3
+                   Language.Egg.Compiler.$trModule1) -}
+adc6bd478ecaba847f8b8bb636f02266
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Language.Egg.Compiler.$trModule2) -}
+932a6b14b2db2844297b73d8991a0632
+  $trModule2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Language.Egg.Compiler"#) -}
+6501ce03200498ea6d62c616d352c550
+  $trModule3 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Language.Egg.Compiler.$trModule4) -}
+5d976283d4b8234f61cec3c26717a58c
+  $trModule4 :: GHC.Prim.Addr#
+  {- HasNoCafRefs,
+     Unfolding: ("egg-0.1.0.0-BICRyseCZOgDidKW8MZQAr"#) -}
+a07c78edeef46b2ff6a5148f7387fb23
+  $wcompile ::
+    [Language.Egg.Types.Decl Language.Egg.Compiler.Tag]
+    -> Language.Egg.Types.Expr Language.Egg.Compiler.Tag
+    -> [Language.Egg.Types.Instruction]
+  {- Arity: 2, Strictness: <L,1*U><L,U>, Inline: [0],
+     Unfolding: (\ (ww :: [Language.Egg.Types.Decl
+                             Language.Egg.Compiler.Tag])
+                   (ww1 :: Language.Egg.Types.Expr Language.Egg.Compiler.Tag) ->
+                 case Language.Egg.Compiler.$wcompileBody
+                        Language.Egg.Types.emptyEnv
+                        ww1 of ww2 { (#,#) ww3 ww4 ->
+                 GHC.Base.++
+                   @ Language.Egg.Types.Instruction
+                   (GHC.Types.: @ Language.Egg.Types.Instruction ww3 ww4)
+                   (Language.Egg.Compiler.compile_go ww) }) -}
+813625d979beb040bcc46c9ba8f9fa0b
+  $wcompileBody ::
+    Language.Egg.Types.Env
+    -> Language.Egg.Compiler.AExp
+    -> (# Language.Egg.Types.Instruction,
+          [Language.Egg.Types.Instruction] #)
+  {- Arity: 2, Strictness: <L,U(U,U)><L,U>, Inline: [0],
+     Unfolding: (\ (w :: Language.Egg.Types.Env)
+                   (w1 :: Language.Egg.Compiler.AExp) ->
+                 (# Language.Egg.Compiler.compile11,
+                    GHC.Types.:
+                      @ Language.Egg.Types.Instruction
+                      Language.Egg.Compiler.compile10
+                      (GHC.Types.:
+                         @ Language.Egg.Types.Instruction
+                         (Language.Egg.Types.ISub
+                            Language.Egg.Compiler.compile6
+                            (Language.Egg.Types.Const
+                               (case Language.Egg.Compiler.$wcountVars
+                                       @ Language.Egg.Compiler.Tag
+                                       w1 of ww { DEFAULT ->
+                                GHC.Types.I# (GHC.Prim.*# 4# ww) })))
+                         (GHC.Types.:
+                            @ Language.Egg.Types.Instruction
+                            Language.Egg.Compiler.compile7
+                            (GHC.Base.++
+                               @ Language.Egg.Types.Instruction
+                               (Language.Egg.Compiler.compileEnv w w1)
+                               Language.Egg.Compiler.funExit))) #)) -}
+2e6c6d5e8f5d7dd65475e4328b056f20
+  $wcountVars :: Language.Egg.Types.AnfExpr a -> GHC.Prim.Int#
+  {- Arity: 1, HasNoCafRefs, Strictness: <S,1*U>, Inline: [0] -}
+6e25a1984979239f3866dcc014038bd7
+  type ABind = Language.Egg.Types.Bind Language.Egg.Compiler.Tag
+6df6763a28ac5c5c0195e5fefa458e41
+  type ADcl = Language.Egg.Types.Decl Language.Egg.Compiler.Tag
+fa910a4ec4af4f3e727657af23c697cc
+  type AExp = Language.Egg.Types.AnfExpr Language.Egg.Compiler.Tag
+20236c1d263e637f1bb22ea583cde328
+  type AOp =
+    Language.Egg.Types.Arg
+    -> Language.Egg.Types.Arg -> [Language.Egg.Types.Instruction]
+e195505fada21777269bf2e19b09f62d
+  type APgm = Language.Egg.Types.Program Language.Egg.Compiler.Tag
+186d3b1f2b1aa64bee8713aa2de33c0f
+  type COp =
+    Language.Egg.Types.Label -> Language.Egg.Types.Instruction
+b4d50336087ef21447acf8a9f1a0b7d3
+  type IExp = Language.Egg.Types.ImmExpr Language.Egg.Compiler.Tag
+d7a2542c01d59ca2f51828663430a15f
+  class Repr a where
+    repr :: a -> Language.Egg.Types.Arg
+    {-# MINIMAL repr #-}
+845875f1c636adc9cc634a2151fa830b
+  type Tag = (Language.Egg.UX.SourceSpan, GHC.Types.Int)
+8150bef7c77bad395a74ab40c37662e9
+  compile ::
+    Language.Egg.Compiler.APgm -> [Language.Egg.Types.Instruction]
+  {- Arity: 1, Strictness: <S(LS),1*U(1*U,U)>, Inline: [0],
+     Unfolding: InlineRule (1, True, False)
+                (\ (w :: Language.Egg.Compiler.APgm) ->
+                 case w of ww { Language.Egg.Types.Prog ww1 ww2 ->
+                 Language.Egg.Compiler.$wcompile ww1 ww2 }) -}
+37775c03ada347eb4f95276e8094e1af
+  compile1 :: [Language.Egg.Types.Instruction]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Language.Egg.Types.Instruction
+                   Language.Egg.Compiler.compile3
+                   Language.Egg.Compiler.compile2) -}
+8c40e464b184beabdbea625d627d7a33
+  compile10 :: Language.Egg.Types.Instruction
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (Language.Egg.Types.IMov
+                   Language.Egg.Compiler.compile4
+                   Language.Egg.Compiler.compile6) -}
+4f7754da5e8f6b1dd7b62c534e995efa
+  compile11 :: Language.Egg.Types.Instruction
+  {- HasNoCafRefs, Strictness: m12,
+     Unfolding: (Language.Egg.Types.IPush
+                   Language.Egg.Compiler.compile4) -}
+b6e2c6c8be9aeffb1ae496aa915a3f2a
+  compile2 :: [Language.Egg.Types.Instruction]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Language.Egg.Types.Instruction
+                   Language.Egg.Types.IRet
+                   (GHC.Types.[] @ Language.Egg.Types.Instruction)) -}
+72b778fd93e57c410e4792a3f7895a20
+  compile3 :: Language.Egg.Types.Instruction
+  {- HasNoCafRefs, Strictness: m13,
+     Unfolding: (Language.Egg.Types.IPop
+                   Language.Egg.Compiler.compile4) -}
+90450530ca513c1d6f62b105a846727f
+  compile4 :: Language.Egg.Types.Arg
+  {- HasNoCafRefs, Strictness: m3,
+     Unfolding: (Language.Egg.Types.Reg Language.Egg.Types.EBP) -}
+3ca522092e0ad942ded1662d9588f286
+  compile5 :: Language.Egg.Types.Instruction
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (Language.Egg.Types.IMov
+                   Language.Egg.Compiler.compile6
+                   Language.Egg.Compiler.compile4) -}
+c00e743c36ee0395fb93bcd703173484
+  compile6 :: Language.Egg.Types.Arg
+  {- HasNoCafRefs, Strictness: m3,
+     Unfolding: (Language.Egg.Types.Reg Language.Egg.Types.ESP) -}
+78fb731de09990e73cbf1b237399729f
+  compile7 :: Language.Egg.Types.Instruction
+  {- HasNoCafRefs, Strictness: m8,
+     Unfolding: (Language.Egg.Types.IAnd
+                   Language.Egg.Compiler.compile6
+                   Language.Egg.Compiler.compile8) -}
+19ca08a4c00fbf117c30f144183870be
+  compile8 :: Language.Egg.Types.Arg
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (Language.Egg.Types.HexConst
+                   Language.Egg.Compiler.compile9) -}
+dfe529e9c84f68825a010bb8f28453cc
+  compile9 :: GHC.Types.Int
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.I# 4294967280#) -}
+cbb52623f0e6880252e1d94eb5cb83f6
+  compileEnv ::
+    Language.Egg.Types.Env
+    -> Language.Egg.Compiler.AExp -> [Language.Egg.Types.Instruction]
+  {- Arity: 2, Strictness: <L,U(U,U)><S,1*U> -}
+db2601a0cd87a2789faa9cbafc069ba3
+  compile_go ::
+    [Language.Egg.Compiler.ADcl] -> [Language.Egg.Types.Instruction]
+  {- Arity: 1, Strictness: <S,1*U> -}
+d2b63cdce57e24b5ff2de3570eaa06a2
+  compiler ::
+    GHC.IO.FilePath -> Language.Egg.UX.Text -> Language.Egg.UX.Text
+  {- Arity: 2, Strictness: <L,U><L,U>,
+     Unfolding: (\ (f :: GHC.IO.FilePath)
+                   (eta :: Language.Egg.UX.Text) ->
+                 Language.Egg.Asm.asm
+                   (case Language.Egg.Parser.parse
+                           f
+                           eta of ww { Language.Egg.Types.Prog ww1 ww2 ->
+                    case Language.Egg.Checker.$wcheck ww1 ww2 of ww3 { (#,#) ww4 ww5 ->
+                    case Language.Egg.Normalizer.$wanf
+                           @ Language.Egg.UX.SourceSpan
+                           Language.Egg.Normalizer.anormal2
+                           ww5 of ww7 { (#,#) ww8 ww9 ->
+                    let {
+                      ds :: (GHC.Types.Int,
+                             [Language.Egg.Types.Decl
+                                (Language.Egg.UX.SourceSpan, Language.Egg.Types.Tag)])
+                      = case Language.Egg.Types.label2
+                               @ Language.Egg.UX.SourceSpan
+                               (GHC.Base.map
+                                  @ (Language.Egg.Types.Decl Language.Egg.UX.SourceSpan)
+                                  @ (Language.Egg.Types.Decl Language.Egg.UX.SourceSpan)
+                                  (Language.Egg.Normalizer.anormal1 @ Language.Egg.UX.SourceSpan)
+                                  ww4)
+                               Language.Egg.Types.label1 of ww10 { (#,#) ww11 ww12 ->
+                        (ww11, ww12) }
+                    } in
+                    case Language.Egg.Types.$wpoly_go
+                           @ Language.Egg.UX.SourceSpan
+                           (case ds of wild { (,) i' ds' -> i' })
+                           ww9 of ww10 { (#,#) ww11 ww12 ->
+                    case Language.Egg.Compiler.$wcompileBody
+                           Language.Egg.Types.emptyEnv
+                           ww12 of ww13 { (#,#) ww14 ww15 ->
+                    GHC.Base.++
+                      @ Language.Egg.Types.Instruction
+                      (GHC.Types.: @ Language.Egg.Types.Instruction ww14 ww15)
+                      (case ds of wild { (,) i' ds' ->
+                       Language.Egg.Compiler.compile_go ds' }) } } } } })) -}
+e1e2f6a0cf92034080393c205d2fbca8
+  funExit :: [Language.Egg.Types.Instruction]
+  {- HasNoCafRefs, Strictness: m2,
+     Unfolding: (GHC.Types.:
+                   @ Language.Egg.Types.Instruction
+                   Language.Egg.Compiler.compile5
+                   Language.Egg.Compiler.compile1) -}
+instance [orphan] Language.Egg.UX.Located [(,)]
+  = Language.Egg.Compiler.$fLocated(,)
+instance [orphan] Language.Egg.UX.Located [Language.Egg.Types.Expr]
+  = Language.Egg.Compiler.$fLocatedExpr
+instance Language.Egg.Compiler.Repr [GHC.Types.Bool]
+  = Language.Egg.Compiler.$fReprBool
+instance Language.Egg.Compiler.Repr [GHC.Types.Int]
+  = Language.Egg.Compiler.$fReprInt
+instance Language.Egg.Compiler.Repr [GHC.Integer.Type.Integer]
+  = Language.Egg.Compiler.$fReprInteger
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: none
+require own pkg trusted: False
+
