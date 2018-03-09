@@ -126,9 +126,9 @@ compileEnv env (If v e1 e2 l)    = assertType env v TBoolean
 
 compileEnv env (Tuple es _)      = 	
 				   tupleAlloc (length es)
-                 		++ addSize env (length es)
- 				++ tupleCopy env es 1
-                 		++ addPad env ((length es) + 1)
+                 	++ tupleAddSize env (length es)
+ 				    ++ tupleCopy env es 1
+                 	++ tupleAddPad env ((length es) + 1)
 			        ++ setTag (Reg EAX) TTuple
 
 --Pseudocode from lecture for Tuples
@@ -148,8 +148,9 @@ compileEnv env (GetItem vE vI _) =
                                 ++ [ ISub (Reg EBX) (typeTag TTuple) ] 
                                 ++ [ IMov (Reg ECX) (immArg env vI) ]
                                 ++ [ ISar (Reg ECX) (Const 1)]
-                                ++ [ IAdd (Reg ECX) (Const 1) ]                       
-                                ++ [ IMov (Reg EAX) (Sized DWordPtr (RegIndex EBX ECX))] 
+                                ++ [ IAdd (Reg ECX) (Const 1) ] 
+                                ++ [ IMov (Reg EAX) (Sized DWordPtr 
+                                        (RegIndex EBX ECX))] 
     
 
 
@@ -201,11 +202,10 @@ strip = fmap (const ())
 
 
 --Added for Tuples--
-tupleAlloc args =
-    [ IMov (Reg EAX) (Reg ESI)
-    , IMov (Sized DWordPtr (RegOffset 0 EAX)) (repr args)
-    , IAdd (Reg ESI) (Const size)
-    ]
+tupleAlloc args = [ IMov (Reg EAX) (Reg ESI)
+                  , IMov (Sized DWordPtr (RegOffset 0 EAX)) (repr args)
+                  , IAdd (Reg ESI) (Const size)
+                  ]
     where
       size = 4 * roundToEven(args+1)
 
@@ -218,11 +218,10 @@ roundToEven :: Int -> Int
 roundToEven n = if mod n 2 == 1 then n+1
                 else n       
  
-addPad env loc =
-               [ IMov (Reg EBX) (Const 0) ]
-            ++ [ IMov (pairAddr loc) (Reg EBX) ] 
+tupleAddPad env loc = [ IMov (Reg EBX) (Const 0) ]
+                   ++ [ IMov (pairAddr loc) (Reg EBX) ] 
 
-addSize env es =
+tupleAddSize env es =
               [ IMov (Reg EBX) (Const es)
               , IShl (Reg EBX) (Const 1)
               , IMov (pairAddr 0) (Reg EBX)
