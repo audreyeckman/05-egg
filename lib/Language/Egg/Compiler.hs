@@ -126,10 +126,10 @@ compileEnv env (If v e1 e2 l)    = assertType env v TBoolean
 
 compileEnv env (Tuple es _)      = 	
 				   tupleAlloc (length es)
-                 ++ addSize env (length es)
- 				 ++ tupleCopy env es 1
-                 ++ addPad env ((length es) + 1)
-			     ++ setTag (Reg EAX) TTuple
+                 		++ addSize env (length es)
+ 				++ tupleCopy env es 1
+                 		++ addPad env ((length es) + 1)
+			        ++ setTag (Reg EAX) TTuple
 
 --Pseudocode from lecture for Tuples
 --1. assertType env e Tuple
@@ -141,20 +141,18 @@ compileEnv env (Tuple es _)      =
 
  
 compileEnv env (GetItem vE vI _) = 
-                                --if vE is a pointer
-                                assertType env vE TTuple
-                                ++ assertType env vI TNumber
+                                   assertType env  vE TTuple
+                                ++ assertType env  vI TNumber
                                 ++ assertBound env vE vI
                                 ++ [ IMov (Reg EBX) (immArg env vE) ]
                                 ++ [ ISub (Reg EBX) (typeTag TTuple) ] 
                                 ++ [ IMov (Reg ECX) (immArg env vI) ]
                                 ++ [ ISar (Reg ECX) (Const 1)]
-                                --increment index
-                                ++ [ IAdd (Reg ECX) (Const 1) ]
-                                --EAX = EAX + ECX * 4                       
-                                ++ [ IMov (Reg EAX) (Sized DWordPtr 
-                                        (RegIndex EBX ECX))] 
+                                ++ [ IAdd (Reg ECX) (Const 1) ]                       
+                                ++ [ IMov (Reg EAX) (Sized DWordPtr (RegIndex EBX ECX))] 
     
+
+
 compileEnv env (App f vs _)      = call (Builtin f) (param env <$> vs)
 
 compileImm :: Env -> IExp -> Instruction
@@ -218,7 +216,8 @@ tupleCopy env (e:es) v = [ IMov (Reg EBX) (immArg env e)]
 
 roundToEven :: Int -> Int
 roundToEven n = if mod n 2 == 1 then n+1
-                else n        
+                else n       
+ 
 addPad env loc =
                [ IMov (Reg EBX) (Const 0) ]
             ++ [ IMov (pairAddr loc) (Reg EBX) ] 
@@ -291,7 +290,7 @@ assertUpperBound env ve vi =
                              ++ [ IJg (DynamicErr (IndexHigh))]
 
 assertBound env ve vi = assertLowerBound env ve vi 
-                        ++ assertUpperBound env ve vi   
+                     ++ assertUpperBound env ve vi   
   
   
   

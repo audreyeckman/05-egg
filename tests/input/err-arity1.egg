@@ -1,0 +1,4 @@
+def sub(x, y, z):
+  x - y
+
+sub(5000)

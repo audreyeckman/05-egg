@@ -99,7 +99,15 @@ void print_boolean(int val){
 }
 
 void print_tuple(int val){
-  printf("TBD:tuple");
+  int *valp = (int *) (val - 1);
+  int size = (*valp) >> 1;
+  printf("(");
+  print_val(valp[1]);
+  for (int i = 2; i <= size; i++){
+    printf(", ");
+    print_val(valp[i]);
+  }
+  printf(")");
 }
 
 int print_val(int val) {
