@@ -1,3 +1,39 @@
 [
 
+{
+ "name"   : "expectedTuple",
+ "code"   : "file",
+ "result" : { "failure": "expected a tuple"}
+},
+
+{
+ "name"   : "err-tuple",   
+ "code"   : "file", 
+ "result" : { "failure": "Error: tuple index too large."} 
+},
+
+{
+ "name"   : "err-tuple1",
+ "code"   : "file",
+ "result" : { "failure": "Error: tuple index too small."}
+},
+{ 
+ "name"   : "err-arity1",
+ "code"   : "file",
+ "result" : { "failure" : "arity" }
+},
+
+{ "name"   : "err-largeNeg-02",
+  "code"   : "file",
+  "result" : { "failure" : "too large" }
+},
+
+{
+ "name"   : "boolN",
+ "code"   : "file" ,
+ "result" : { "value" : "184\nfalse"}
+}
+
+
+
 ]
